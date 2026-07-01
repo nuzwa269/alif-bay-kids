@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حروف کی دنیا</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500;700&family=Noto+Sans+Arabic:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="curtain curtain-top" aria-hidden="true"></div>
+  <div class="curtain curtain-right" aria-hidden="true"></div>
+  <div class="curtain curtain-left" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <header class="top-bar" aria-label="پیش رفت">
+      <button class="round-button" id="homeButton" type="button" aria-label="گھر جائیں">🏠</button>
+      <div class="progress-pill">⭐ ستارے: <span id="starCount">0</span></div>
+      <div class="progress-pill">✅ درست: <span id="correctCount">0</span>/<span id="totalCount">0</span></div>
+      <button class="round-button" id="backButton" type="button" aria-label="واپس جائیں">↩</button>
+    </header>
+
+    <section class="stage-card" id="app" aria-live="polite"></section>
+  </main>
+
+  <template id="mascotTemplate">
+    <div class="mascot" aria-label="خوش مزاج طوطا">
+      <div class="mascot-body">🦜</div>
+      <div class="speech-bubble">آئیں کھیلیں!</div>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
