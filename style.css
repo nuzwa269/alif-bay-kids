@@ -1,0 +1,110 @@
+:root {
+  --red: #e52b3e;
+  --deep-red: #a41025;
+  --sky: #7fd8ff;
+  --blue: #2767ff;
+  --yellow: #ffd54a;
+  --green: #3ccf7a;
+  --pink: #ff6fb1;
+  --purple: #8e63ff;
+  --ink: #26304d;
+  --card: rgba(255, 255, 255, 0.94);
+  --shadow: 0 16px 32px rgba(62, 40, 120, 0.22);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  direction: rtl;
+  font-family: "Noto Naskh Arabic", "Noto Sans Arabic", Arial, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255,255,255,.8) 0 7%, transparent 8%),
+    radial-gradient(circle at 82% 12%, rgba(255,255,255,.7) 0 6%, transparent 7%),
+    linear-gradient(#75d9ff 0 58%, #ffe7a7 58% 100%);
+  overflow-x: hidden;
+}
+
+button, .letter-card, .word-text, .game-button { font-family: "Noto Naskh Arabic", "Noto Sans Arabic", Arial, sans-serif; }
+button { border: 0; cursor: pointer; min-height: 60px; touch-action: manipulation; }
+button:focus-visible, .letter-card:focus-visible, .word-card:focus-visible { outline: 5px solid #fff; outline-offset: 4px; }
+
+.curtain { position: fixed; z-index: 0; pointer-events: none; background: repeating-linear-gradient(90deg, var(--deep-red) 0 18px, var(--red) 18px 42px); box-shadow: inset 0 -12px 30px rgba(0,0,0,.2); }
+.curtain-top { top: 0; left: 0; right: 0; height: 70px; border-radius: 0 0 45% 45%; }
+.curtain-right, .curtain-left { top: 0; bottom: 0; width: 46px; }
+.curtain-right { right: 0; } .curtain-left { left: 0; }
+
+.app-shell { position: relative; z-index: 1; width: min(1180px, calc(100% - 44px)); margin: 0 auto; padding: 82px 0 20px; }
+.top-bar { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.progress-pill, .round-button { background: #fff; border: 4px solid var(--yellow); border-radius: 999px; box-shadow: var(--shadow); font-weight: 900; font-size: clamp(1rem, 2vw, 1.25rem); padding: 10px 18px; }
+.round-button { width: 66px; padding: 6px; }
+.stage-card { min-height: 68vh; border: 8px solid #fff; border-radius: 36px; background: linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,249,222,.94)); box-shadow: var(--shadow); padding: clamp(18px, 3vw, 32px); position: relative; overflow: hidden; }
+.stage-card:before { content: "★ ★ ★"; position: absolute; inset-inline-start: 22px; top: 14px; color: var(--yellow); font-size: 32px; letter-spacing: 10px; }
+
+.hero { text-align: center; display: grid; gap: 12px; }
+h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.4rem); color: var(--deep-red); text-shadow: 3px 3px 0 #fff, 6px 6px 0 rgba(255,213,74,.75); }
+h2 { margin: 0; font-size: clamp(1.8rem, 4vw, 3.2rem); color: var(--blue); }
+.subtitle, .instruction { font-size: clamp(1.1rem, 2.3vw, 1.55rem); font-weight: 800; margin: 0; }
+
+.letters-grid, .games-grid, .words-preview, .matching-grid, .word-cards, .result-actions { display: grid; gap: 16px; }
+.letters-grid { grid-template-columns: repeat(7, minmax(110px, 1fr)); margin: 18px 0; }
+.letter-card { min-height: 178px; border-radius: 30px; color: #fff; font-weight: 900; padding: 14px; box-shadow: var(--shadow); border: 5px solid #fff; transform: rotate(var(--tilt)); transition: transform .2s, filter .2s; }
+.letter-card:hover { transform: translateY(-8px) rotate(var(--tilt)) scale(1.03); }
+.letter-card.locked { filter: grayscale(.25); opacity: .78; }
+.big-letter { display: block; font-size: clamp(3.8rem, 8vw, 6.6rem); line-height: 1; }
+.letter-name { display: block; font-size: 1.25rem; }
+.icon { display: block; font-size: 2rem; }
+
+.games-grid { grid-template-columns: repeat(4, minmax(160px, 1fr)); margin-top: 16px; }
+.game-button, .primary-button, .secondary-button { border-radius: 24px; border: 5px solid #fff; box-shadow: var(--shadow); font-weight: 900; font-size: clamp(1.1rem, 2vw, 1.45rem); padding: 14px 18px; color: #fff; background: linear-gradient(135deg, var(--purple), var(--blue)); }
+.primary-button { background: linear-gradient(135deg, var(--green), #0aa86a); }
+.secondary-button { background: linear-gradient(135deg, var(--pink), #ff8b3d); }
+
+.mascot { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 8px auto; }
+.mascot-body { font-size: 4rem; animation: bounce 1.6s infinite; }
+.speech-bubble { background: #fff; border: 4px solid var(--yellow); border-radius: 24px; padding: 8px 16px; font-weight: 900; }
+
+.detail-head, .game-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.feature-letter { font-size: clamp(5rem, 12vw, 9rem); color: var(--deep-red); line-height: 1; }
+.words-preview { grid-template-columns: repeat(4, 1fr); margin: 20px 0; }
+.word-preview, .flash-card, .image-box, .result-panel { background: #fff; border-radius: 28px; border: 5px solid #fff0a8; box-shadow: var(--shadow); padding: 16px; text-align: center; font-weight: 900; }
+.picture { font-size: clamp(3rem, 7vw, 5.5rem); display: block; line-height: 1.1; }
+.word-text { font-size: clamp(1.6rem, 4vw, 2.6rem); }
+
+.flash-wrap { display: grid; grid-template-columns: 1fr; justify-items: center; gap: 18px; }
+.flash-card { width: min(520px, 100%); min-height: 360px; display: grid; place-items: center; background: linear-gradient(180deg, #fff, #fff7ce); }
+.flash-letter { font-size: 6rem; color: var(--blue); line-height: 1; }
+.controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.audio-button { background: var(--yellow); border-radius: 999px; font-size: 1.2rem; font-weight: 900; padding: 10px 18px; }
+
+.balloons { min-height: 360px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 18px; padding: 14px; }
+.balloon { width: 104px; height: 132px; border-radius: 52% 52% 48% 48%; color: #fff; font-size: 3.8rem; font-weight: 900; box-shadow: var(--shadow); position: relative; animation: float 2.4s infinite ease-in-out; }
+.balloon:after { content: ""; position: absolute; bottom: -18px; right: 45px; border: 10px solid transparent; border-top-color: inherit; }
+.pop { animation: pop .28s forwards; }
+.shake { animation: shake .35s; }
+
+.matching-grid { grid-template-columns: repeat(4, 1fr); margin: 18px 0; }
+.image-box { min-height: 190px; border-style: dashed; }
+.image-box.correct { border-color: var(--green); background: #eafff2; }
+.word-cards { grid-template-columns: repeat(4, 1fr); }
+.word-card { min-height: 72px; border-radius: 20px; background: #fff; border: 4px solid var(--purple); font-size: 1.65rem; font-weight: 900; display: grid; place-items: center; box-shadow: var(--shadow); cursor: grab; user-select: none; }
+.word-card.hidden { visibility: hidden; }
+
+.build-area { display: grid; gap: 18px; justify-items: center; }
+.answer-boxes, .letter-tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; direction: rtl; }
+.answer-slot, .letter-tile { min-width: 70px; min-height: 70px; border-radius: 18px; display: grid; place-items: center; font-size: 2.2rem; font-weight: 900; }
+.answer-slot { background: #fff; border: 4px dashed var(--blue); }
+.letter-tile { background: var(--yellow); border: 4px solid #fff; box-shadow: var(--shadow); }
+.letter-tile.used { opacity: .35; pointer-events: none; }
+.feedback { min-height: 42px; text-align: center; font-size: 1.55rem; font-weight: 900; color: var(--deep-red); }
+.result-actions { grid-template-columns: repeat(3, 1fr); margin-top: 18px; }
+
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+@keyframes pop { to { transform: scale(1.8) rotate(22deg); opacity: 0; } }
+@keyframes shake { 25%{transform:translateX(8px)} 50%{transform:translateX(-8px)} 75%{transform:translateX(6px)} }
+
+@media (max-width: 980px) { .letters-grid { grid-template-columns: repeat(4, 1fr); } .games-grid, .words-preview, .matching-grid, .word-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .app-shell { width: min(100% - 20px, 1180px); padding-top: 76px; } .letters-grid, .games-grid, .words-preview, .matching-grid, .word-cards, .result-actions { grid-template-columns: 1fr; } .curtain-right, .curtain-left { width: 20px; } }
